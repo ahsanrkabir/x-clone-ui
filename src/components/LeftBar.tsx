@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import Image from "@/components/Image";
 
 const menuList = [
