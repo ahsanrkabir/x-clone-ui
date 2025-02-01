@@ -18,7 +18,7 @@ export default function RootLayout({
           </div>
 
           {/* MAIN CONTENT */}
-          <div className="flex-1 lg:min-w-[600px] border-x-[1px] border-gray-100">
+          <div className="flex-1 lg:min-w-[600px] border-x-[1px] border-borderGray">
             {children}
           </div>
 
