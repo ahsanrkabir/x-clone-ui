@@ -35,7 +35,7 @@ const Share = () => {
       {/* USER AVATAR */}
       <div className="relative w-10 h-10 rounded-full overflow-hidden">
         <Image
-          path="/general/avatar.png"
+          path="/antisocial/general/avatar.png"
           alt="user avatar"
           w={100}
           h={100}
@@ -54,13 +54,13 @@ const Share = () => {
         />
 
         {/* PREVIEW IMAGE */}
-        {previewURL && (
+        {media?.type.includes("image") && previewURL && (
           <div className="relative rounded-xl overflow-hidden">
             <NextImage
               src={previewURL}
               alt="preview"
               width={600}
-              height={400}
+              height={600}
               className={`w-full ${
                 settings.type === "original"
                   ? "h-full object-contain"
@@ -74,6 +74,25 @@ const Share = () => {
               className="absolute top-2 left-2 bg-black bg-opacity-50 text-white py-1 px-4 rounded-full font-bold text-sm cursor-pointer"
             >
               Edit
+            </div>
+            <div
+              onClick={() => setMedia(null)}
+              className="absolute top-2 right-2 bg-black bg-opacity-50 text-white h-8 w-8 flex items-center justify-center rounded-full cursor-pointer font-bold text-sm"
+            >
+              X
+            </div>
+          </div>
+        )}
+
+        {/* PREVIEW VIDEO */}
+        {media?.type.includes("video") && previewURL && (
+          <div className="relative">
+            <video src={previewURL} controls />
+            <div
+              onClick={() => setMedia(null)}
+              className="absolute top-2 right-2 bg-black bg-opacity-50 text-white h-8 w-8 flex items-center justify-center rounded-full cursor-pointer font-bold text-sm"
+            >
+              X
             </div>
           </div>
         )}
@@ -94,13 +113,14 @@ const Share = () => {
             <input
               name="file"
               type="file"
+              id="file"
+              accept="image/*,video/*"
               onChange={handleMediaChange}
               className="hidden"
-              id="file"
             />
             <label htmlFor="file">
               <Image
-                path="/icons/image.svg"
+                path="/antisocial/icons/image.svg"
                 alt=""
                 w={20}
                 h={20}
@@ -109,35 +129,35 @@ const Share = () => {
             </label>
 
             <Image
-              path="/icons/gif.svg"
+              path="/antisocial/icons/gif.svg"
               alt=""
               w={20}
               h={20}
               className="cursor-pointer"
             />
             <Image
-              path="/icons/poll.svg"
+              path="/antisocial/icons/poll.svg"
               alt=""
               w={20}
               h={20}
               className="cursor-pointer"
             />
             <Image
-              path="/icons/emoji.svg"
+              path="/antisocial/icons/emoji.svg"
               alt=""
               w={20}
               h={20}
               className="cursor-pointer"
             />
             <Image
-              path="/icons/schedule.svg"
+              path="/antisocial/icons/schedule.svg"
               alt=""
               w={20}
               h={20}
               className="cursor-pointer"
             />
             <Image
-              path="/icons/location.svg"
+              path="/antisocial/icons/location.svg"
               alt=""
               w={20}
               h={20}

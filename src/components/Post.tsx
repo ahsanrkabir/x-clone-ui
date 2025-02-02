@@ -1,8 +1,36 @@
 import Image from "@/components/Image";
 import PostInfo from "@/components/PostInfo";
 import PostInteractions from "@/components/PostInteractions";
+import { imagekit } from "@/utils";
+import Video from "@/components/Video";
 
-const Post = () => {
+interface FileDetailsResponse {
+  width: number;
+  height: number;
+  filePath: string;
+  url: string;
+  fileType: string;
+  customMetadata?: {
+    sensitive: boolean;
+  };
+}
+
+const Post = async () => {
+  const getFileDetails = async (
+    fileId: string
+  ): Promise<FileDetailsResponse> => {
+    return new Promise((resolve, reject) => {
+      imagekit.getFileDetails(fileId, function (error, result) {
+        if (error) reject(error);
+        else resolve(result as FileDetailsResponse);
+      });
+    });
+  };
+
+  const fileDetails = await getFileDetails("679fe702432c476416691f2d");
+
+  console.log(fileDetails);
+
   return (
     <div className="p-4 border-y-[1px] border-borderGray">
       {/* POST TYPE */}
@@ -25,7 +53,13 @@ const Post = () => {
       <div className="flex gap-4">
         {/* AUTHOR AVATAR */}
         <div className="relative w-10 h-10 rounded-full overflow-hidden">
-          <Image path="/general/avatar.png" alt="avatar" w={100} h={100} tr />
+          <Image
+            path="/antisocial/general/avatar.png"
+            alt="avatar"
+            w={100}
+            h={100}
+            tr
+          />
         </div>
 
         {/* CONTENT */}
@@ -49,7 +83,23 @@ const Post = () => {
             ipsum tempora! Ut nostrum quisquam assumenda dicta placeat, harum
             quo ullam.
           </p>
-          <Image path="/general/post.jpeg" alt="post" w={600} h={600} />
+
+          {/* <Image path="/general/post.jpeg" alt="post" w={600} h={600} /> */}
+
+          {fileDetails && fileDetails.fileType === "image" ? (
+            <Image
+              path={fileDetails.filePath}
+              alt="post"
+              w={fileDetails.width}
+              h={fileDetails.height}
+              className={fileDetails.customMetadata?.sensitive ? "blur-lg" : ""}
+            />
+          ) : (
+            <Video
+              path={fileDetails.filePath}
+              className={fileDetails.customMetadata?.sensitive ? "blur-lg" : ""}
+            />
+          )}
 
           {/* POST INTERACTIONS */}
           <PostInteractions />

@@ -1,9 +1,15 @@
+import PopularTags from "./PopularTags";
+import Recommendations from "./Recommendations";
+import Search from "./Search";
+
 const RightBar = () => {
-  return ( 
+  return (
     <div className="">
-      RightBar
+      <Search />
+      <PopularTags />
+      <Recommendations />
     </div>
-   );
-}
- 
+  );
+};
+
 export default RightBar;

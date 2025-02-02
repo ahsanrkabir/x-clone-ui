@@ -71,7 +71,7 @@ const LeftBar = () => {
       {/* LOGO + NAVLINKS + POST BUTTON */}
       <div className="flex flex-col gap-4 text-lg items-center xxl:items-start">
         <Link href="/" className="p-2 rounded-full hover:bg-hoverGray">
-          <Image path="/icons/logo.svg" alt="logo" w={24} h={24} />
+          <Image path="/antisocial/icons/logo.svg" alt="logo" w={24} h={24} />
         </Link>
 
         <div className="flex flex-col gap-2">
@@ -81,7 +81,12 @@ const LeftBar = () => {
               href={link}
               className="p-2 rounded-full hover:bg-hoverGray flex items-center gap-4"
             >
-              <Image path={`/icons/${icon}`} alt={name} w={24} h={24} />
+              <Image
+                path={`/antisocial/icons/${icon}`}
+                alt={name}
+                w={24}
+                h={24}
+              />
               <span className="hidden xxl:inline">{name}</span>
             </Link>
           ))}
@@ -91,7 +96,12 @@ const LeftBar = () => {
           href="/"
           className="bg-white text-black rounded-full w-12 h-12 flex items-center justify-center xxl:hidden"
         >
-          <Image path="icons/post.svg" alt="new post" w={24} h={24} />
+          <Image
+            path="/antisocial/icons/post.svg"
+            alt="new post"
+            w={24}
+            h={24}
+          />
         </Link>
         <Link
           href="/"
@@ -105,7 +115,13 @@ const LeftBar = () => {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="w-10 h-10 relative rounded-full overflow-hidden">
-            <Image path="/general/avatar.png" alt="avatar" w={100} h={100} tr />
+            <Image
+              path="/antisocial/general/avatar.png"
+              alt="avatar"
+              w={100}
+              h={100}
+              tr
+            />
           </div>
           <div className="hidden xxl:flex flex-col">
             <span className="font-bold">Ahsan kabir</span>

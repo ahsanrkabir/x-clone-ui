@@ -17,10 +17,11 @@ const Image = ({ path, w, h, alt, className, tr }: ImageProps) => {
   return (
     <IKImage
       urlEndpoint={urlEndpoint}
-      path={`/antisocial/${path}`}
+      path={`/${path}`}
       {...(tr
         ? { transformation: [{ width: `${w}`, height: `${h}` }] }
         : { width: w, height: h })}
+      lqip={{ active: true, quality: 20 }}
       alt={alt}
       className={className}
     />

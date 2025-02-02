@@ -1,12 +1,6 @@
 "use server";
 
-import ImageKit from "imagekit";
-
-const imagekit = new ImageKit({
-  publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
-  privateKey: process.env.PRIVATE_KEY!,
-  urlEndpoint: process.env.NEXT_PUBLIC_URL_ENDPOINT!,
-});
+import { imagekit } from "@/utils";
 
 export const shareAction = async (
   formData: FormData,
@@ -21,7 +15,7 @@ export const shareAction = async (
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 
-  const transformation = `w-600, ${
+  const transformation = `w-600,${
     settings.type === "square"
       ? "ar-1-1"
       : settings.type === "wide"
@@ -29,14 +23,18 @@ export const shareAction = async (
       : ""
   }`;
 
+  console.log(settings.type);
+
   imagekit.upload(
     {
       file: buffer,
       fileName: file.name,
       folder: "/antisocial/posts",
-      transformation: {
-        pre: transformation,
-      },
+      ...(file.type.includes("image") && {
+        transformation: {
+          pre: transformation,
+        },
+      }), // Only for images
       customMetadata: {
         sensitive: settings.sensitive,
       },
