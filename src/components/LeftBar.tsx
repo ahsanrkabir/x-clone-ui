@@ -67,7 +67,7 @@ const menuList = [
 
 const LeftBar = () => {
   return (
-    <div className="h-screen sticky top-0 flex flex-col justify-between pt-2 pb-8">
+    <div className="h-screen sticky top-0 flex flex-col justify-between pt-3 pb-8">
       {/* LOGO + NAVLINKS + POST BUTTON */}
       <div className="flex flex-col gap-4 text-lg items-center xxl:items-start">
         <Link href="/" className="p-2 rounded-full hover:bg-hoverGray">

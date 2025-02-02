@@ -1,13 +1,30 @@
-import PopularTags from "./PopularTags";
-import Recommendations from "./Recommendations";
-import Search from "./Search";
+import Link from "next/link";
+
+import PopularTags from "@/components/PopularTags";
+import Recommendations from "@/components/Recommendations";
+import Search from "@/components/Search";
 
 const RightBar = () => {
   return (
-    <div className="">
+    <div className="pt-3 flex flex-col gap-4 sticky top-0 h-max">
+      {/* SEARCH */}
       <Search />
+
+      {/* POPULAR TAGS */}
       <PopularTags />
+
+      {/* RECOMMENDATIONS */}
       <Recommendations />
+
+      {/* FOOTER */}
+      <div className="text-textGray text-sm flex gap-x-4 flex-wrap">
+        <Link href="/">Terms of Service</Link>
+        <Link href="/">Privacy Policy</Link>
+        <Link href="/">Cookie Policy</Link>
+        <Link href="/">Accessibility</Link>
+        <Link href="/">Ads Info</Link>
+        <span>©️ 2025 Antisocial Corp.</span>
+      </div>
     </div>
   );
 };

@@ -23,7 +23,7 @@ export default function RootLayout({
           </div>
 
           {/* RIGHTBAR */}
-          <div className="hidden lg:flex ml-4 md:ml-8 flex-1">
+          <div className="hidden lg:flex mx-4 md:mx-8 flex-1">
             <RightBar />
           </div>
         </div>
