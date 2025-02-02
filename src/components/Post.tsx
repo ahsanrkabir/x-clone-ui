@@ -1,8 +1,9 @@
 import Image from "@/components/Image";
 import PostInfo from "@/components/PostInfo";
 import PostInteractions from "@/components/PostInteractions";
-import { imagekit } from "@/utils";
 import Video from "@/components/Video";
+
+import { imagekit } from "@/utils";
 
 interface FileDetailsResponse {
   width: number;
